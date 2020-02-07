@@ -9,16 +9,13 @@ public with sharing class lwcBackControl {
         List<Lead>  leads = ((List<Lead>) response[2]);
         List<WrappedData> responseList = new List<WrappedData>();
         for(Account acc: accounts){
-            WrappedData wrappedItem = new WrappedData(acc);
-            responseList.add(wrappedItem);
+            responseList.add(new WrappedData(acc));
         }
         for(Contact cont: contacts){
-            WrappedData wrappedItem = new WrappedData(cont);
-            responseList.add(wrappedItem);
+            responseList.add(new WrappedData(cont));
         }
         for(Lead leed: leads){
-            WrappedData wrappedItem = new WrappedData(leed);
-            responseList.add(wrappedItem);
+            responseList.add(new WrappedData(leed));
         }
 
         return responseList;
