@@ -2,11 +2,11 @@
 import { LightningElement, track} from 'lwc';
 import getMatchesList from '@salesforce/apex/lwcBackControl.getMatchesList';
 const columnList = [
-    {label: 'Id', fieldName: 'Id'},
-    {label: 'Name', fieldName: 'Name'}
+    {label: 'Name', fieldName: 'Name'},
+    {label: 'Phone', fieldName: 'Phone'}
 ];
     export default class DataRetriever extends LightningElement {
-        @track contacts;
+        @track dataSet;
         @track error;
         @track columnList = columnList;
         keyChanged(event) {
@@ -15,11 +15,11 @@ const columnList = [
             // eslint-disable-next-line @lwc/lwc/no-async-operation
             this.delayTimeout = setTimeout(() => {
             getMatchesList({ searchKey }).then(result => {
-                this.contacts = result;
+                this.dataSet = result;
                 this.error = undefined;
             }).catch(error => {
                 this.error = error;
-                this.contacts = undefined;
+                this.dataSet = undefined;
             });
         }, 350);
     }
